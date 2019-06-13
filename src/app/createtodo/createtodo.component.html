@@ -1,0 +1,26 @@
+<div class="form_container">
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <header>Create Todo</header>
+
+    <label>Name<span>*</span></label>
+    <input type="text" name="name" formControlName="name" />
+
+    <label>Start date <span>*</span></label>
+    <input type="date" name="startDate" formControlName="startDate" />
+
+    <label>End date <span>*</span></label>
+    <input type="date" name="endDate" formControlName="endDate" />
+
+    <label>Effort <span>*</span></label>
+    <input type="text" name="effort" formControlName="effort" />
+
+    <label>Assined user <span>*</span></label>
+    <select name="assignedUser" formControlName="assignedUser" [(ngModel)]="users" >
+      <option *ngFor="let user of users" [value]="user.id">
+        {{user.name}}
+      </option>
+    </select>
+
+    <button [disabled]="!formdata.valid" value="Submit">Submit</button>
+  </form>
+</div>

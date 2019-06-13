@@ -19,6 +19,7 @@ export class UserService {
 
     private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
     public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+    private rootApi = '/users';
 
     constructor(
         private router: Router,
@@ -91,5 +92,9 @@ export class UserService {
                 this.currentUserSubject.next(data.user);
                 return data.user;
             }));
+    }
+
+    getUsers(): Observable<any> {
+        return this.apiService.get(this.rootApi);
     }
 }

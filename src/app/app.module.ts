@@ -20,6 +20,7 @@ import { JwtService } from './services/jwt.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './inceptors/request.interceptor';
 import { TodolistComponent } from './todolist/todolist.component';
+import { CreatetodoComponent } from './createtodo/createtodo.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
   {
     path: 'todos', canActivate: [AuthGuard],
     component: TodolistComponent
+  },
+  {
+    path: 'todos/create', canActivate: [AuthGuard],
+    component: CreatetodoComponent
   }
 ];
 
@@ -38,7 +43,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     UserloginComponent,
-    TodolistComponent
+    TodolistComponent,
+    CreatetodoComponent
   ],
 
   imports: [
