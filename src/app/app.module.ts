@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     component: UserloginComponent
   },
   {
-    path: 'todos',
+    path: 'todos', canActivate: [AuthGuard],
     component: TodolistComponent
   }
 ];
