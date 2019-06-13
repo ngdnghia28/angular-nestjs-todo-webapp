@@ -14,6 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { UserService } from './services/user.service';
+import { ApiService } from './services/api.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { JwtService } from './services/jwt.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -42,10 +47,11 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     HttpModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
 
-  providers: [],
+  providers: [UserService, ApiService, AuthGuard, JwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

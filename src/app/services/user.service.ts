@@ -66,7 +66,7 @@ export class UserService {
         this.router.navigate(['/login']);
     }
 
-    attemptAuth(type, credentials): Observable<User> {
+    attemptAuth(credentials): Observable<User> {
         const credentialz = btoa(credentials.email + ':' + credentials.password);
         const basicAuth = 'Basic ' + credentialz;
         return this.apiService.post('/auth', {}, { headers: { Authorization: basicAuth } })

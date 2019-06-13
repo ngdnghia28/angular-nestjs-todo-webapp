@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-userlogin',
@@ -10,31 +11,35 @@ import { Router } from '@angular/router';
 
 export class UserloginComponent implements OnInit {
   formdata;
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
+
   ngOnInit() {
     this.formdata = new FormGroup({
-      uname: new FormControl('', Validators.compose([
+      email: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(6)
+        Validators.email
       ])),
-      passwd: new FormControl('', this.passwordvalidation)
+      password: new FormControl('', this.passwordvalidation)
     });
   }
 
   passwordvalidation(formcontrol) {
     if (formcontrol.value.length < 5) {
-      return { passwd: true };
+      return { password: true };
     }
   }
 
-  onClickSubmit(data) {
-    console.log(data.uname);
-    if (data.uname === 'systemadmin' && data.passwd === 'admin123') {
-      alert('Login Successful');
-      this.router.navigate(['app-mainpage']);
-    } else {
-      alert('Invalid Login');
-      return false;
-    }
+  onClickSubmit(credentials) {
+    this.userService
+      .attemptAuth(credentials)
+      .subscribe(
+        data => this.router.navigateByUrl('/app-mainpage'),
+        err => {
+          alert('Wrong email or password.');
+        }
+      );
   }
 }
