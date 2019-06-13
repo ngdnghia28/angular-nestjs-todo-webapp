@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
-import { MainpageComponent } from './mainpage/mainpage.component';
 import { UserService } from './services/user.service';
 import { ApiService } from './services/api.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -24,12 +23,8 @@ import { TodolistComponent } from './todolist/todolist.component';
 
 const appRoutes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: UserloginComponent
-  },
-  {
-    path: 'app-mainpage',
-    component: MainpageComponent
   },
   {
     path: 'todos',
@@ -43,7 +38,6 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     UserloginComponent,
-    MainpageComponent,
     TodolistComponent
   ],
 

@@ -36,7 +36,7 @@ export class UserloginComponent implements OnInit {
     this.userService
       .attemptAuth(credentials)
       .subscribe(
-        data => this.router.navigateByUrl('/app-mainpage'),
+        data => this.router.navigateByUrl('/todos'),
         err => {
           alert('Wrong email or password.');
         }
