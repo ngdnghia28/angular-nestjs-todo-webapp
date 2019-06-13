@@ -6,7 +6,7 @@ import { ReplaySubject } from 'rxjs';
 
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
-import { User } from '../../models/user';
+import { User } from '../models/user';
 import { map } from 'rxjs/operators';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
