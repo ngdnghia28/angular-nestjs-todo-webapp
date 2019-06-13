@@ -18,7 +18,9 @@ import { UserService } from './services/user.service';
 import { ApiService } from './services/api.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { JwtService } from './services/jwt.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './inceptors/request.interceptor';
+import { TodolistComponent } from './todolist/todolist.component';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +30,10 @@ const appRoutes: Routes = [
   {
     path: 'app-mainpage',
     component: MainpageComponent
+  },
+  {
+    path: 'todos',
+    component: TodolistComponent
   }
 ];
 
@@ -37,7 +43,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     UserloginComponent,
-    MainpageComponent
+    MainpageComponent,
+    TodolistComponent
   ],
 
   imports: [
@@ -51,7 +58,9 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
 
-  providers: [UserService, ApiService, AuthGuard, JwtService],
+  providers: [UserService, ApiService, AuthGuard, JwtService,
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

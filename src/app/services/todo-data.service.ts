@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class TodoDataService {
-  rootPath = 'todos';
+  rootPath = '/todos';
 
   constructor(
     private apiService: ApiService,

@@ -1,0 +1,20 @@
+<!-- <p> -->
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Effort</th>
+    <th>Assigned user</th>
+  </tr>
+  <tr *ngFor="let todo of todos">
+    <td>{{todo.id}}</td>
+    <td>{{todo.name}}</td>
+    <td>{{todo.startDate}}</td>
+    <td>{{todo.endDate}}</td>
+    <td>{{todo.effort}}</td>
+    <td>{{todo.assignedUser.name}}</td>
+  </tr>
+</table>
+<!-- </p> -->
