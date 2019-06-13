@@ -15,7 +15,7 @@
     <input type="text" name="effort" formControlName="effort" />
 
     <label>Assined user <span>*</span></label>
-    <select name="assignedUser" formControlName="assignedUser" [(ngModel)]="users" >
+    <select name="assignedUser" formControlName="assignedUser" [(ngModel)]="assignedUser" >
       <option *ngFor="let user of users" [value]="user.id">
         {{user.name}}
       </option>
